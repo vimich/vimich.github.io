@@ -1,4 +1,4 @@
-name: Node.js CI
+name: AccentureWorkshop
 
 on:
   push:
@@ -7,22 +7,25 @@ on:
     branches: [ develop ]
 
 jobs:
-  build:
-
+  setup:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [10.x, 12.x, 14.x, 15.x]
-
     steps:
       - uses: actions/checkout@v2
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 14.x
         uses: actions/setup-node@v2
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: '14.x'
       - name: Install dependencies
         run: npm ci
-      - run: npm run lint:ts
-      - run: npm run lint:css
-      - run: npm test
+  linting:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run typescript lint and format check
+        run: npm run lint:ts
+      - name: Run styles lint and format check
+        run: npm run lint:css
+  test:
+    runs-on: ubuntu-latest
+    steps:      
+      - name: Run tests
+        run: npm test
