@@ -1,0 +1,22 @@
+{
+    "compilerOptions": {
+        "baseUrl": "src",
+        "outDir": "build/",
+        "sourceMap": true,
+        "allowJs": true,
+        "noImplicitAny": false,
+        "noUnusedLocals": true,
+        "noUnusedParameters": false,
+        "experimentalDecorators": true,
+        "forceConsistentCasingInFileNames": true,
+        "module": "commonjs",
+        "removeComments": true,
+        "target": "es6",
+        "moduleResolution": "node",
+        "jsx": "react",
+        "typeRoots": ["node_modules/@types"],
+        "allowSyntheticDefaultImports": true
+    },
+    "exclude": ["node_modules", "build", "coverage", "config"],
+    "include": ["./src/**/*", "test-utils"]
+}

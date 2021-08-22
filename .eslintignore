@@ -1,0 +1,14 @@
+node_modules
+dist
+build
+coverage
+config
+
+*.css
+*.scss
+*.svg
+*.woff
+*.ttf
+*.eot
+*.html
+*.snap

@@ -1,0 +1,104 @@
+{
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint", "react"],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/recommended",
+        "plugin:@typescript-eslint/recommended-requiring-type-checking",
+        "plugin:react/recommended",
+        "plugin:react-hooks/recommended",
+        "plugin:prettier/recommended",
+        "prettier"
+    ],
+    "parserOptions": {
+        "project": "./tsconfig.json",
+        "ecmaVersion": 6,
+        "sourceType": "module",
+        "ecmaFeatures": {
+            "jsx": true,
+            "modules": true
+        }
+    },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
+    "ignorePatterns": ["styleTransformer.ts", "*.otf", "*.png"],
+    "rules": {
+        "max-len": [
+            "error",
+            {
+                "code": 200
+            }
+        ],
+        "quotes": ["error", "single"],
+        "semi": ["error", "always"],
+        "comma-dangle": ["error", "never"],
+        "arrow-parens": "off",
+        "arrow-body-style": "off",
+        "curly": "error",
+        "complexity": ["error", 37],
+        "linebreak-style": ["error", "unix"],
+        "max-lines": ["error", 400],
+        "new-parens": "error",
+        "no-bitwise": "error",
+        "no-multiple-empty-lines": "error",
+        "no-console": "error",
+        "no-empty": "error",
+        "no-shadow": "off",
+        "@typescript-eslint/no-shadow": ["error"],
+        "no-trailing-spaces": [
+            "error",
+            {
+                "skipBlankLines": true,
+                "ignoreComments": true
+            }
+        ],
+        "no-extra-semi": "error",
+        "no-unused-expressions": "error",
+        "no-var": "error",
+        "prefer-const": "error",
+        "prefer-spread": "error",
+        "prefer-template": "error",
+        "jsx-quotes": ["error", "prefer-double"],
+        "radix": "error",
+        "no-script-url": "error",
+        "no-constant-condition": "error",
+        "no-invalid-regexp": "error",
+        "valid-typeof": "error",
+        "sort-keys": "off",
+        "no-eval": "error",
+        "no-caller": "error",
+        "react/no-danger": "error",
+        "react/no-danger-with-children": "error",
+        "react/no-unused-prop-types": "error",
+        "react/prop-types": [0],
+        "react/jsx-no-target-blank": "error",
+        "react/jsx-indent": "off",
+        "react/jsx-curly-spacing": [
+            "error",
+            {
+                "when": "never"
+            }
+        ],
+        "@typescript-eslint/no-unsafe-call": "off",
+        "@typescript-eslint/no-unsafe-member-access": "off",
+        "@typescript-eslint/no-unsafe-assignment": "off",
+        "@typescript-eslint/consistent-type-definitions": [
+            "error",
+            "interface"
+        ],
+        "@typescript-eslint/explicit-member-accessibility": "error",
+        "@typescript-eslint/no-var-requires": "off",
+        "no-magic-numbers": "off",
+        "@typescript-eslint/no-magic-numbers": [
+            "warn",
+            {
+                "ignoreEnums": true,
+                "ignore": [-2, -1, 0, 1, 2, 3, 4, 5]
+            }
+        ]
+    }
+}
