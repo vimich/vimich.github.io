@@ -18,6 +18,7 @@ jobs:
       - name: Install dependencies
         run: npm ci
   linting:
+    needs: setup
     runs-on: ubuntu-latest
     steps:
       - name: Run typescript lint and format check
@@ -25,6 +26,7 @@ jobs:
       - name: Run styles lint and format check
         run: npm run lint:css
   test:
+    needs: linting
     runs-on: ubuntu-latest
     steps:      
       - name: Run tests
