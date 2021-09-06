@@ -6,7 +6,9 @@
     "license": "ISC",
     "scripts": {
         "start": "webpack serve --config config/webpack.dev.js",
-        "build": "webpack --config config/webpack.prod.js",
+        "build": "npm run copy && npm run webpack-prod",
+        "webpack-prod": "webpack --config config/webpack.prod.js",
+        "copy": "cpx \".github/workflows/build-pipeline.yml\" dist -v -p",
         "lint:ts": "eslint \"src/**/*\"",
         "lint:fix": "eslint \"src/**/*\" --fix",
         "lint:css": "stylelint \"./src/**/*.tsx\"",
@@ -51,6 +53,7 @@
         "babel-loader": "8.1.0",
         "copy-webpack-plugin": "^6.4.0",
         "css-loader": "^5.0.0",
+        "cpx": "^1.5.0",
         "dotenv-webpack": "^6.0.0",
         "eslint": "7.12.1",
         "eslint-config-prettier": "^8.3.0",

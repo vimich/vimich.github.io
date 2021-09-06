@@ -12,7 +12,7 @@ import { Home } from '../home/Home';
 const StyledApp = styled.main`
     display: flex;
     height: 100%;
-    background: ${colors.lightBlack};
+    background: ${colors.white};
     align-content: center;
     justify-content: center;
 `;
