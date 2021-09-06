@@ -13,7 +13,7 @@ Great, now we're ready to start!
 
 You can find the workflow file in `.github/workflows/build-pipeline.yml`. Github Actions will automatically detect all workflows that are located in this folder.
 
-Let us first start with a little introduction to how a workflow file is set up. The file is written in `YAML` format and stands for *YAML ain’t markup language* (a recursive acronym), which emphasizes that YAML is for data, not documents. Under you can see an example `.yaml`/`.yml` file
+Let us first start with a little introduction to how a workflow file is set up. The file is written in `YAML` format and stands for *YAML ain’t markup language* (a recursive acronym), which emphasizes that YAML is for data, not documents. Under you can see an example of a `.yaml`/`.yml` file
 
 ```yaml
 name: This is a workflow
@@ -27,19 +27,19 @@ on:
     - master
 
 jobs:
-  comment:
+  print-comment:
     runs-on: ubuntu-latest
     steps:
       - run: |
           echo "This is a comment"
 ```
 
-This workflow has the name `This is a workflow` and has only one job that has the name `comment`. Both the name of the workflow and the name of the jobs can be whatever you want. The `on` parameter tells us that this workflow will be triggered every time we push changes or create a pull request to the `master` branch.
+This workflow has the name `This is a workflow` and has only one job that has the name `print-comment`. For more complex workflows you would usally have multiple different `jobs`, and these run in parallell by default Both the name of the workflow and the name of the jobs can be whatever you want. The `on` parameter tells us that this workflow will be triggered every time we push changes or create a pull request to the `master` branch.
 
-One of the nice things about GitHub Actions is that it doesn't just support running builds on Linux hosts, or in containers, but it also provides virtual machines running on Windows and macOS. Actually, the macOS virtual environments are especially important, since even as a developer, you can't run macOS in a virtual machine unless you do it on Apple hardware. So if you're building cross-platform applications, that could limit how you can build and test your own application locally. To specify the host type, you indicate that with the `runs-on` parameter for a job. Here, we are running on a Linux VM by using `
+One of the nice things about GitHub Actions is that it doesn't just support running builds on Linux hosts, or in containers, but it also provides virtual machines running on Windows and macOS. So if you're building cross-platform applications, you can easily verify your code in different OSs. To specify the host type, you indicate that with the `runs-on` parameter for a job. Here, we are running on a Linux VM by using `
 ubuntu-latest`.
 
-<ADD EXPLANATION TO STEPS, RUN>
+Next in the workflow is `steps` which are the building blocks of a job. These are processes that are run in the environement you specified above, and has access to both the filesystem and workspace. The final term we are going to introduce here is `run`. Run triggers command-line programs using the operating system's shell, such as the unix-command *echo*, or trigger a python command such as *pip install*. 
 
 ## Step 2: Let's build and deploy our code 🚀
 
