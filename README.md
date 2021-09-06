@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1. From your personal github account create a new public repository with the name www.your_github_username.github.io. 
+1. From your personal github account create a new public repository with the name www.<your_github_username>.github.io. 
 
 2. You should now see three options on how to set up your repository. Click on the option `Import code` and use the repository url 
 https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
@@ -43,7 +43,7 @@ ubuntu-latest`.
 
 ## Step 2: Let's build and deploy our code 🚀
 
-Below you can see an example deploy job, but it's missing some key elements to be working properly.
+Below you can see an example of a job that first checkouts our code, sets up `Node.js` (with stated version), installs all necessary dependencies, then builds our code before deploying it to GitHub pages. GitHub pages lets you easily turn GitHub repositories into websites, which is exactly what we are going to do here.
 
 ```yaml
 jobs:
@@ -65,8 +65,11 @@ jobs:
           branch: gh-pages
           folder: dist
 ```
+The parameter `uses` selects an action to run as part of a step in your job. An action is just a reusable unit of code which can be defined in your own repository, in a public repository, or in a published Docker container image. 
 
-**Task**: Fill in the necessary information in order to deploy your code every time you push to a specified branch. Push your changes to see the results at www.your_github_username.github.io.
+In the example above, the deploy step will create a new branch named `gh-pages` that will contain our built code used in deploying our website.
+
+**Task: In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see the results at www.<your_github_username>.github.io.**
 
 ## Step 3: Oh no! Something is wrong with our code 🐛
 
