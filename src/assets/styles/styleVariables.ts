@@ -5,8 +5,11 @@ export const colors = {
     white: '#ffffff',
     gray: '#D0D9CE',
     blueRegular: '#521EFF',
-    baseFontColor: '#ffffff',
-    acnPurple1: '#a100ff'
+    baseFontColor: '#484444',
+    fontColorLight: '#4a4a4a',
+    acnPurple1: '#a100ff',
+    greenSuccess: '#CEF0C4',
+    redUnsuccessful: '#F0CCC5'
 };
 
 export const sizes = {
@@ -20,7 +23,7 @@ export const sizes = {
 };
 
 export const fonts = {
-    roboto: 'Roboto, sans-serif'
+    glory: 'Glory, sans-serif'
 };
 
 export const fontWeight = {
