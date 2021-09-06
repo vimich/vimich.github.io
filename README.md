@@ -87,11 +87,11 @@ jobs:
     needs: [job1, job2]
 ```
 
-**Task: Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking your `Actions` page.**
+**Task: Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow your `Actions` page.**
 
 **Discussion point: What are the benefits of adding this step to our workflow?**
 
-Ever heard about linting before? Well, linting is what makes your code readable, less dependent on who wrote the code, and generally prettier to look at.
+Ever heard about linting before? Well, linting is what makes your code readable, less dependent on who wrote the code, and generally prettier to look at. If you want to learn more about why you should lint, check out [this](https://www.perforce.com/blog/qac/what-lint-code-and-why-linting-important) blogpost.
 
 ```yaml
       - name: Run typescript lint and format check
@@ -100,7 +100,7 @@ Ever heard about linting before? Well, linting is what makes your code readable,
         run: npm run lint:css
 ```
   
-**Task: Add the steps above to your existing job that contains the testing step. Verify that everything is running successfully by checking your `Actions` page.**
+**Task: Add the steps above for running typescript and css linting to your existing job that contains the testing step. Verify that everything is running successfully by checking the workflow in your `Actions` page.**
 
 ## Step 4: Adding secrets
 
@@ -108,7 +108,7 @@ You'll often need things like tokens or passwords in deployment scenarios. For i
 
 To set up a secret, go to your `Repository Settings` page, then select `Secrets`. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
   
-To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}` as in the example below.
+To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}`.
 
 **Task: Create a job `secret` that runs on a Linux VM and saves the secret you've created to the environment variable `PASSWORD`.**
   
