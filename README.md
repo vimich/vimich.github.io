@@ -101,26 +101,13 @@ Copy paste an unfinished code snippet that includes a linting job.
 
 ## Step 4: Adding secrets
 
-You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you would want to avoid having your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
+You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you don't want to have your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
 
 To set up a secret, go to your `Repository Settings` page, then select `Secrets`. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
   
 To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}` as in the example below.
 
-```yaml
-jobs:
-  build:
-    name: Secret
-    runs-on: ubuntu-latest
-    steps:
-      - run: |
-          VERSION=$(date +%s)
-          export ${{ secrets.SECRET_KEY }}
-          docker build . --file Dockerfile --tag ethomson/app:${VERSION}
-          docker push ethomson/app:${VERSION}
-```
-
-**Task**: Create a 
+**Task: Create a job `secret` that runs on a Linux VM and saves the secret you've created to the environment variable `SECRET`.**
   
 ## Step 5: Ok, so now we have added some must have steps to our workflow. Let's explore! 🍀
 
