@@ -39,7 +39,7 @@ This workflow has the name `This is a workflow` and has only one job that has th
 One of the nice things about GitHub Actions is that it doesn't just support running builds on Linux hosts, or in containers, but it also provides virtual machines running on Windows and macOS. So if you're building cross-platform applications, you can easily verify your code in different OSs. To specify the host type, you indicate that with the `runs-on` parameter for a job. Here, we are running on a Linux VM by using `
 ubuntu-latest`.
 
-Next in the workflow is `steps` which are the building blocks of a job. These are processes that are run in the environement you specified above, and has access to both the filesystem and workspace. The final term we are going to introduce here is `run`. Run triggers command-line programs using the operating system's shell, such as the unix-command *echo*, or trigger a python command such as *pip install*. 
+Next in the workflow is `steps` which are the building blocks of a job. These are processes that are run in the environement you specified above, and has access to both the filesystem and workspace. The final term we are going to introduce here is `run`. Run triggers command-line programs using the operating system's shell, such as the unix-command `echo`, or trigger a python command such as `pip install`.
 
 ## Step 2: Let's build and deploy our code 🚀
 
@@ -69,35 +69,38 @@ The parameter `uses` selects an action to run as part of a step in your job. An 
 
 In the example above, the deploy step will create a new branch named `gh-pages` that will contain our built code used in deploying our website.
 
-**Task: In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see the results at www.<your_github_username>.github.io.**
-
+**Task: In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at www.<your_github_username>.github.io.**
 ## Step 3: Oh no! Something is wrong with our code 🐛
 
-We now want to add the step of automatically testing our code before we build it. When setting up mulitple jobs in a workflow, the jobs run independently of each other, in parallel. Usually, that's ideal. Your jobs will run as soon as machines are available to execute them.
+We now want to add the step of automatically testing our code before we build it. When setting up multiple jobs in a workflow, the jobs run independently of each other, in parallel. Usually, that's ideal. Your jobs will run as soon as machines are available to execute them.
 
 But sometimes you want to be able to set up jobs that depend on other jobs. For example, you might have some services that you want to test against. But to save money, you only want to run those services when you're actually running tests. So you might want to have a job that starts your services, a job that runs your tests, and then a job that stops your services.
 
-To specify dependencies between jobs, you can use the `needs` keyword to indicate what jobs rely on the completion of other jobs.
+To specify dependencies between jobs, you can use the `needs` parameter to indicate what jobs rely on the completion of other jobs. In the example below, `job1` must complete successfully before `job2` begins, and `job3` waits for both `job1` and `job2` to complete.
 
 ```yaml
-Copy paste an unfinished code snippet that includes a test job.
+jobs:
+  job1:
+  job2:
+    needs: job1
+  job3:
+    needs: [job1, job2]
 ```
 
-**Task**: Fill in the necessary information in order to automatically run all tests before deploying. 
+**Task: Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking your `Actions` page.**
 
-**Task**: One test is failing! We need to fix it in order to be able to deploy. 
+**Discussion point: What are the benefits of adding this step to our workflow?**
 
-Question: What are the benefits of adding this step to our workflow?
-
-Ever heard about linting before? Linting it what makes your code readable, less dependent on who wrote the code, and generally prettier to look at.
+Ever heard about linting before? Well, linting is what makes your code readable, less dependent on who wrote the code, and generally prettier to look at.
 
 ```yaml
-Copy paste an unfinished code snippet that includes a linting job.
+      - name: Run typescript lint and format check
+        run: npm run lint:ts
+      - name: Run styles lint and format check
+        run: npm run lint:css
 ```
   
-**Task**: Fill in the necessary information in order to automatically run linting on your code before test and deploy.
-  
-**Task**: The linting is failing! We need to fix this in order to be able to deploy.
+**Task: Add the steps above to your existing job that contains the testing step. Verify that everything is running successfully by checking your `Actions` page.**
 
 ## Step 4: Adding secrets
 
@@ -107,7 +110,7 @@ To set up a secret, go to your `Repository Settings` page, then select `Secrets`
   
 To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}` as in the example below.
 
-**Task: Create a job `secret` that runs on a Linux VM and saves the secret you've created to the environment variable `SECRET`.**
+**Task: Create a job `secret` that runs on a Linux VM and saves the secret you've created to the environment variable `PASSWORD`.**
   
 ## Step 5: Ok, so now we have added some must have steps to our workflow. Let's explore! 🍀
 
