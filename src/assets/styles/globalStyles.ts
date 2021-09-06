@@ -23,12 +23,12 @@ const GlobalStyle = createGlobalStyle`
     }
   
     td, select, input, textarea, p, a, button, option, dd, dt, i, li, span {
-      font-family: ${fonts.roboto};
+      font-family: ${fonts.glory};
       font-size: ${sizes.fontBase};
     }
     
     h1, h2, h3, h4 {
-      font-family: ${fonts.roboto};
+      font-family: ${fonts.glory};
       font-weight: 700;
     }
     
@@ -53,7 +53,7 @@ const GlobalStyle = createGlobalStyle`
     }
     
     b, strong, th, label {
-      font-family: ${fonts.roboto};
+      font-family: ${fonts.glory};
       font-weight: 700;
     }
     

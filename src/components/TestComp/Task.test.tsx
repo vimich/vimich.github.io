@@ -1,8 +1,10 @@
 import * as React from 'react';
 import { IntlProvider } from 'react-intl';
 
-import { render, screen } from '../../../test-utils/testUtil';
-import { Home } from './Home';
+import { render } from '../../../test-utils/testUtil';
+import { Task } from './Task';
+
+import testImg from '../../assets/images/deployment.svg';
 
 const testInitalMessages = {
     'test.text': 'test text',
@@ -13,18 +15,21 @@ const testInitalMessages = {
     'test.key': 'test key'
 };
 
-describe(Home, () => {
-    test('expected elements of Home', () => {
-        render(
+describe(Task, () => {
+    test('snapshot', () => {
+        const wrapper = render(
             <IntlProvider
                 messages={testInitalMessages}
                 locale="en"
                 defaultLocale="en">
-                <Home />
+                <Task
+                    img={testImg}
+                    imgPlaceholder={testImg}
+                    intlPrefix="test.text"
+                    completed={true}
+                />
             </IntlProvider>
         );
-
-        // eslint-disable-next-line @typescript-eslint/no-magic-numbers
-        expect(screen.getAllByRole('heading')).toHaveLength(7);
+        expect(wrapper.asFragment()).toMatchSnapshot();
     });
 });

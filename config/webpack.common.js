@@ -1,6 +1,6 @@
 module.exports = {
     resolve: {
-        extensions: ['.ts', '.tsx', '.js', '.css', '.json']
+        extensions: ['.ts', '.tsx', '.js', '.css', '.json', '.yml']
     },
     module: {
         rules: [
@@ -25,7 +25,7 @@ module.exports = {
                 use: ['style-loader', 'css-loader']
             },
             {
-                test: /\.(svg|eot|otf|ttf|woff2?)$/,
+                test: /\.(svg|.yml|eot|otf|ttf|woff2?)$/,
                 use: 'file-loader'
             }
         ]
