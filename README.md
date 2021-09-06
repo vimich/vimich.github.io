@@ -118,6 +118,9 @@ You're now able to automatically check linting and testing before deploying your
 
 Now, let's see what fun we can do! And there are sooo many options. For instance,
 
-### Sending an email notification every time a job fails and/or succeeds. 📫
+## Step 6: Sending an email notification every time a job fails and/or succeeds. 📫
   
 ### Set a timing for when a deploy should be set. ⏰
+
+## Step-<INPUT> You are becoming a pro, time to explore Github Marketplace
+In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository.
