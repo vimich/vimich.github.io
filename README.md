@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1. From your personal github account create a new public repository with the name www.<your_github_username>.github.io. 
+1. From your personal github account create a new public repository with the name www.your_github_username.github.io. 
 
 2. You should now see three options on how to set up your repository. Click on the option `Import code` and use the repository url 
 https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
@@ -69,7 +69,7 @@ The parameter `uses` selects an action to run as part of a step in your job. An 
 
 In the example above, the deploy step will create a new branch named `gh-pages` that will contain our built code used in deploying our website.
 
-**Task: In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at www.<your_github_username>.github.io.**
+**Task: In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at www.your_github_username.github.io.**
 ## Step 3: Oh no! Something is wrong with our code 🐛
 
 We now want to add the step of automatically testing our code before we build it. When setting up multiple jobs in a workflow, the jobs run independently of each other, in parallel. Usually, that's ideal. Your jobs will run as soon as machines are available to execute them.
