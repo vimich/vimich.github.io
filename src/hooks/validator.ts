@@ -17,7 +17,7 @@ export const validateCDCI = async (): Promise<IValidator> => {
         lint:
             validateText(buildText, 'run: npm run lint:ts') &&
             validateText(buildText, 'run: npm run lint:css'),
-        secret: !!process.env.PASSWORD,
+        secret: !!process.env.SECRET,
         test: validateText(buildText, 'run: npm test')
     };
 };

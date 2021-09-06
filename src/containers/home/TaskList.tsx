@@ -16,7 +16,11 @@ import TestBlackImg from '../../assets/images/test_black.svg';
 
 const TaskList: React.FC = () => {
     const [validated, setValidated] = React.useState<IValidator>(null);
-    void validateCDCI().then(v => setValidated(v));
+
+    React.useEffect(() => {
+        void validateCDCI().then(v => setValidated(v));
+    }, []);
+
     return (
         <>
             <Task
