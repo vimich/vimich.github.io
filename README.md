@@ -7,48 +7,66 @@
 2. Choose the last option by clicking `Import code` like shown below, and use the repository url 
 https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
 
-  ![import code picture](https://github.com/acntech/workshop-github-actions/blob/develop/pictures/import_code.png)
-
 Great, now we're ready to start!
 
 ## Step 1: The basics 
 
-You can find the pipeline file in `.github/workflows/build-pipeline.yml`
+You can find the workflow file in `.github/workflows/build-pipeline.yml`. Github Actions will automatically detect all workflows that are located in this folder.
 
-Let us first start with a little introduction to how a pipeline file is set up. The file is written in `YAML` format and stands for *YAML ain’t markup language* (a recursive acronym), which emphasizes that YAML is for data, not documents. Under you can see an example `.yaml`/`.yml` file
-
-```yaml
-this is an example yaml file
-```
-* Explanation of name, on, jobs, runs-on, steps, run
-
-### on
-
-GitHub Actions lets you define a trigger that controls when your workflow runs. Whenever an action matching that trigger happens in your repository, a workflow run will be queued up.
-
-### runs-on
-
-One of the nice things about GitHub Actions is that it doesn't just support running builds on Linux hosts, or in containers. GitHub provides Linux virtual machines - of course - but they also provide virtual machines running Windows and macOS.
-
-The macOS virtual environments are especially important, since even as a developer, you can't run macOS in a virtual machine unless you do it on Apple hardware. So if you're building cross-platform applications, that could limit how you can build and test your own application locally.
-
-To specify the host type, you indicate that with the runs-on parameter for a job. For example, runs-on: macos-latest will run on macOS, and runs-on: windows-latest will - no surprise - run on Windows. 
-
-### run
-
-But what's actually installed on these environments? It turns out that there's a lot installed.
-
-The team tries to keep our runners up-to-date with a number of different platforms. So you'll find a number of different versions of Python, Ruby, .NET Core and more. But - just by virtue of the wide variety of development tools out there - they can't have absolutely everything installed.
-
-Sometimes you'll need to install it yourself. And since you get a whole virtual machine to yourself, for each job execution, you can install whatever you want on them.
-
-## Step 2: Let's deploy our code 🚀
+Let us first start with a little introduction to how a workflow file is set up. The file is written in `YAML` format and stands for *YAML ain’t markup language* (a recursive acronym), which emphasizes that YAML is for data, not documents. Under you can see an example `.yaml`/`.yml` file
 
 ```yaml
-Here, the pipeline file will only include a deploy job. There is no linting nor testing.
+name: This is a workflow
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+jobs:
+  comment:
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          echo "This is a comment"
 ```
 
-Task: Fill in the necessary information in order to deploy your code every time you push to a specified branch. Push your changes to see the results at www.your_github_username.github.io.
+This workflow has the name `This is a workflow` and has only one job that has the name `comment`. Both the name of the workflow and the name of the jobs can be whatever you want. The `on` parameter tells us that this workflow will be triggered every time we push changes or create a pull request to the `master` branch.
+
+One of the nice things about GitHub Actions is that it doesn't just support running builds on Linux hosts, or in containers, but it also provides virtual machines running on Windows and macOS. Actually, the macOS virtual environments are especially important, since even as a developer, you can't run macOS in a virtual machine unless you do it on Apple hardware. So if you're building cross-platform applications, that could limit how you can build and test your own application locally. To specify the host type, you indicate that with the `runs-on` parameter for a job. Here, we are running on a Linux VM by using `
+ubuntu-latest`.
+
+<ADD EXPLANATION TO STEPS, RUN>
+
+## Step 2: Let's build and deploy our code 🚀
+
+Below you can see an example deploy job, but it's missing some key elements to be working properly.
+
+```yaml
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Use Node.js 14.x
+        uses: actions/setup-node@v2
+        with:
+          node-version: '14.x'
+      - name: Install dependencies
+        run: npm ci
+      - name: Build
+        run: npm run build
+      - name: Deploy 🚀
+        uses: JamesIves/github-pages-deploy-action@4.1.4
+        with:
+          branch: gh-pages
+          folder: dist
+```
+
+**Task**: Fill in the necessary information in order to deploy your code every time you push to a specified branch. Push your changes to see the results at www.your_github_username.github.io.
 
 ## Step 3: Oh no! Something is wrong with our code 🐛
 
@@ -62,23 +80,46 @@ To specify dependencies between jobs, you can use the `needs` keyword to indicat
 Copy paste an unfinished code snippet that includes a test job.
 ```
 
-Task: Fill in the necessary information in order to automatically run all tests before deploying. 
+**Task**: Fill in the necessary information in order to automatically run all tests before deploying. 
 
-Task: One test is failing! We need to fix it in order to be able to deploy. 
+**Task**: One test is failing! We need to fix it in order to be able to deploy. 
 
-Question: What are the benefits of adding this step to our pipeline?
+Question: What are the benefits of adding this step to our workflow?
 
-Ever heard about linting before? Linting it what makes your code pretty readable, less dependent on who wrote the code, and generally prettier to look at.
+Ever heard about linting before? Linting it what makes your code readable, less dependent on who wrote the code, and generally prettier to look at.
 
 ```yaml
 Copy paste an unfinished code snippet that includes a linting job.
 ```
   
-Task: Fill in the necessary information in order to automatically run linting on your code before test and deploy.
+**Task**: Fill in the necessary information in order to automatically run linting on your code before test and deploy.
   
-Task: The linting is failing! We need to fix this in order to be able to deploy.
+**Task**: The linting is failing! We need to fix this in order to be able to deploy.
+
+## Step 4: Adding secrets
+
+You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you would want to avoid having your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
+
+To set up a secret, go to your `Repository Settings` page, then select `Secrets`. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
   
-## Step 4: Ok, so now we have added some must have steps to our pipeline. Let's explore! 🍀
+To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}` as in the example below.
+
+```yaml
+jobs:
+  build:
+    name: Secret
+    runs-on: ubuntu-latest
+    steps:
+      - run: |
+          VERSION=$(date +%s)
+          export ${{ secrets.SECRET_KEY }}
+          docker build . --file Dockerfile --tag ethomson/app:${VERSION}
+          docker push ethomson/app:${VERSION}
+```
+
+**Task**: Create a 
+  
+## Step 5: Ok, so now we have added some must have steps to our workflow. Let's explore! 🍀
 
 You're now able to automatically check linting and testing before deploying your code. And you didn't have to do anything except push your code!
 
@@ -87,11 +128,3 @@ Now, let's see what fun we can do! And there are sooo many options. For instance
 ### Sending an email notification every time a job fails and/or succeeds. 📫
   
 ### Set a timing for when a deploy should be set. ⏰
-  
-### Adding secrets 
-
-You'll often need things like tokens or passwords in deployment scenarios - GitHub Actions supports savings these as secrets in your repository.
-
-To set up a secret, go to your Repository Settings page, then select Secrets. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
-  
-To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `SECRET_KEY`, you could reference that as `${{secret.SECRET_KEY}}`.
