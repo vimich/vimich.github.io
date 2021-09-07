@@ -17,7 +17,6 @@ const Container = styled.section<{ completed: boolean }>`
     display: flex;
     flex-direction: column;
     width: 100%;
-    height: 20vh;
     padding: 1rem 20%;
     box-shadow: 0px -1px 0px 0px ${colors.fontColorLight};
     background-color: ${props =>
@@ -32,7 +31,7 @@ const BadgeContainer = styled.div<{ reverseOrder: boolean }>`
 `;
 
 const Badge = styled.img<{ reverseOrder: boolean }>`
-    height: 4rem;
+    height: 8rem;
     margin: ${props => (props.reverseOrder ? '0 0 0 1rem' : '0 1rem 0 0')};
 `;
 

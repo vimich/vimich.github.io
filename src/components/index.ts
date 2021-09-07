@@ -1,1 +1,1 @@
-export * from './TestComp';
+export * from './Task';
