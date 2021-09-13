@@ -9,8 +9,14 @@ import HealthCheckImg from '../../assets/images/health_check.svg';
 import HealthCheckBlackImg from '../../assets/images/health_check_black.svg';
 import ClockImg from '../../assets/images/clock.svg';
 import ClockBlackImg from '../../assets/images/clock_black.svg';
+import ConditionalImg from '../../assets/images/conditional.svg';
+import ConditionalBlackImg from '../../assets/images/conditional_black.svg';
 import DockerImg from '../../assets/images/docker.svg';
 import DockerBlackImg from '../../assets/images/docker_black.svg';
+import Docker2Img from '../../assets/images/docker_2.svg';
+import Docker2BlackImg from '../../assets/images/docker_2_black.svg';
+import Docker3Img from '../../assets/images/docker_3.svg';
+import Docker3BlackImg from '../../assets/images/docker_3_black.svg';
 import LintImg from '../../assets/images/lint.svg';
 import LintBlackImg from '../../assets/images/lint_black.svg';
 import SecretImg from '../../assets/images/secret.svg';
@@ -74,8 +80,8 @@ const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
             />
             <Task
                 completed={validated?.conditional}
-                img={ClockImg}
-                imgPlaceholder={ClockBlackImg}
+                img={ConditionalImg}
+                imgPlaceholder={ConditionalBlackImg}
                 intlPrefix="task.conditional"
                 isBadgeFirst={true}
             />
@@ -87,15 +93,15 @@ const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
             />
             <Task
                 completed={validated?.docker2}
-                img={DockerImg}
-                imgPlaceholder={DockerBlackImg}
+                img={Docker2Img}
+                imgPlaceholder={Docker2BlackImg}
                 intlPrefix="task.docker2"
                 isBadgeFirst={true}
             />
             <Task
                 completed={validated?.docker3}
-                img={DockerImg}
-                imgPlaceholder={DockerBlackImg}
+                img={Docker3Img}
+                imgPlaceholder={Docker3BlackImg}
                 intlPrefix="task.docker3"
             />
             <Task

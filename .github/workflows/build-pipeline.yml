@@ -46,6 +46,7 @@ jobs:
       - name: Build
         run: npm run build
       #- name: Deploy 🚀
+      #  if: github.ref == 'refs/heads/develop'
       #  uses: JamesIves/github-pages-deploy-action@4.1.4
       #  with:
       #    branch: gh-pages
