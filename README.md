@@ -71,7 +71,7 @@ The parameter `uses` selects an action to run as part of a step in your job. An 
 
 In the example above, the deploy step will create a new branch named `gh-pages` that will contain our built code used in deploying our website.
 
-> **Task:** In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `develop` branch. Push your changes to `develop` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at your_github_username.github.io.
+> **Task:** In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `develop` branch. Push your changes to `develop` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at: *your_github_username.github.io*.
 ## Step 3: Oh no! Something is wrong with our code 🐛
 
 We now want to add the step of automatically testing our code before we build it. When setting up multiple jobs in a workflow, the jobs run independently of each other, in parallel. Usually, that's ideal. Your jobs will run as soon as machines are available to execute them.
@@ -149,7 +149,7 @@ To be able to complete this task, you will need
 
 In the script that we are going to create, you need to use both your Docker Hub username and password. As was dicussed in Step 5, we do not want usernames or passwords our code, and we will therefore once again use Secrets.
 
->**Task 1:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password. Then create a step in your workflow using `docker/login-action@v1` to log into Docker Hub in your workflow
+>**Task 1:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password. Create a new job and then create a step in your workflow using `docker/login-action@v1` to log into Docker Hub in your workflow. 
 
 Next we need to tell Docker Hub where we want to store our Docker image. 
 
