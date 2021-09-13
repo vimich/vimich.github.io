@@ -133,14 +133,8 @@ To set up a secret, go to your `Repository Settings` page, then select `Secrets`
 To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}`, and store it as an environment variable so that your code can get ahold of it.
 
 > **Task:** Create a secret with name `PASSWORD`. In the same step as for the previous task,assign the secret's value to the environment variable `SECRET`. What happens if you try to print out the secret. *NB: Although this variable does not have a concrete usecase yet, we will actually apply it in Step 6, where you can choose to integrate with Docker hub.*
-  
-## Step 6: Ok, so now we have added some must have steps to our workflow. Let's explore!  🌈
 
-You're now able to automatically check linting and testing before deploying your code. And you didn't have to do anything except push your code!
-
-Now, let's see what fun we can do! And there are sooo many options. For instance,
-
-### Pushing a Docker image to Docker Hub 🐳
+### Step 6 (OPTIONAL): Pushing a Docker image to Docker Hub 🐳
 Docker has become a quintessential element of becoming a part of modern software development, and let's you build and ship your code easier than ever. This is accomplished by creating an image, more specificely a Docker image, which contains everything that is needed for your code to run, e.g. operating system, dependecies, and your code. This image can then be used to create indentical deployments to different servers, with you as a developer having to worry if your code is going to behave differently.
 
 In the same way we can push our code to Github repository, Docker provides a repository to store all our Docker images. This is known as Docker Hub. A handy option is therefore to push a new Docker image to Docker Hub, each time we merge and release a new version of our code. Luckily this operation can be automated using Github actions, and is what you are to accomplish in this task.
@@ -156,7 +150,8 @@ In the script that we are going to create we need both our Docker Hub username a
 >**Task 1:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password
 
 >**Task 2:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password
-
+## Step 7: You are becoming a pro, time to explore Github Marketplace 🌈
+In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository. Below you can find some examples.
 ### Send e-mail notification when a workflow fails/succeeds 📫
 Check out [this](https://github.com/marketplace/actions/send-email) action if you want to send an e-mail notification to your gmail account when your workflow fails and/or succeeds. **Note** if you have set up 2FA (Two Factor Authentication) on your email, this action won't work.
 
@@ -165,6 +160,3 @@ Are you an earlybird or a nightowl? When are you most productive during the day?
 
 ### Set a timing for when a deploy should be set ⏰
 Sometimes we want to deploy regurarly and not just when a defined action, such as pushing our code, happens. We can use the `schedule` parameter for this as shown in [this](https://docs.github.com/en/actions/guides/scheduling-issue-creation) documentation.
-
-## Step 7: You are becoming a pro, time to explore Github Marketplace
-In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository.
