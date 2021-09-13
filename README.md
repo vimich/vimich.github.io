@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1. From your personal github account create a new public repository with the name www.your_github_username.github.io. 
+1. From your personal github account create a new public repository with the name your_github_username.github.io.
 
 2. You should now see three options on how to set up your repository. Click on the option `Import code` and use the repository url 
 https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
@@ -43,7 +43,7 @@ Next in the workflow is `steps` which are the building blocks of a job. These ar
 
 ## Step 2: Let's build and deploy our code 🚀
 
-Below you can see an example of a job that first checkouts our code, sets up `Node.js` (with stated version), installs all necessary dependencies, then builds our code before deploying it to GitHub pages. GitHub pages lets you easily turn GitHub repositories into websites, which is exactly what we are going to do here.
+Below you can see an example of a job that first checkouts our code, sets up `Node.js` (with stated version), installs all necessary dependencies, then builds our code before deploying it to GitHub pages. GitHub pages lets you easily turn GitHub repositories into websites, which is exactly what we are going to do here. If you want to learn more about GitHub pages check out [this](https://github.com/marketplace/actions/deploy-to-github-pages) documentation.
 
 ```yaml
 jobs:
@@ -69,7 +69,7 @@ The parameter `uses` selects an action to run as part of a step in your job. An 
 
 In the example above, the deploy step will create a new branch named `gh-pages` that will contain our built code used in deploying our website.
 
-**Task: In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at www.your_github_username.github.io.**
+> **Task:** In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at www.your_github_username.github.io.
 ## Step 3: Oh no! Something is wrong with our code 🐛
 
 We now want to add the step of automatically testing our code before we build it. When setting up multiple jobs in a workflow, the jobs run independently of each other, in parallel. Usually, that's ideal. Your jobs will run as soon as machines are available to execute them.
@@ -87,7 +87,7 @@ jobs:
     needs: [job1, job2]
 ```
 
-**Task: Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow your `Actions` page.**
+> **Task:** Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow your `Actions` page.
 
 **Discussion point: What are the benefits of adding this step to our workflow?**
 
@@ -100,27 +100,68 @@ Ever heard about linting before? Well, linting is what makes your code readable,
         run: npm run lint:css
 ```
   
-**Task: Add the steps above for running typescript and css linting to your existing job that contains the testing step. Verify that everything is running successfully by checking the workflow in your `Actions` page.**
+> **Task**: Add the steps above for running typescript and css linting to your existing job that contains the testing step. Verify that everything is running successfully by checking the workflow in your `Actions` page.
 
-## Step 4: Adding secrets
+## Step 4: Environment variables 🍀
 
-You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you don't want to have your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
+Sometimes our action could need input from outside of our workflow to run, which is when we
+want to use environment variables. You can define environment variables for a step, job, or
+entire workflows. The example below shows how to use environment variables in a step using the `env` parameter.
+
+```yaml
+jobs:
+  weekday_job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Hello world when it's Monday"
+        run: echo "Hello $FIRST_NAME $MIDDLE_NAME $LAST_NAME, today is Monday!"
+        env:
+          FIRST_NAME: Mona
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+```
+As seen here, if you want to use the value of an environment variable inside a runner, you can use the runner operating system's normal method for reading environment variables. For Linux, we reference environment variables using `$NAME_OF_VARIABLE`.
+
+> **Task**: Add a step to either of your jobs that prints out an environment variable of your choice.
+
+## Step 5: Adding secrets
+
+Secrets is actually the perfect scenario to use environment variables. You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you don't want to have your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
 
 To set up a secret, go to your `Repository Settings` page, then select `Secrets`. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
   
-To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}`.
+To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}`, and store it as an environment variable so that your code can get ahold of it.
 
-**Task: Create a job `secret` that runs on a Linux VM and saves the secret you've created to the environment variable `PASSWORD`.**
+> **Task:** Create a secret with name `PASSWORD`. In the same step as for the previous task,assign the secret's value to the environment variable `SECRET`. What happens if you try to print out the secret. *NB: Although this variable does not have a concrete usecase yet, we will actually apply it in Step 6, where you can choose to integrate with Docker hub.*
   
-## Step 5: Ok, so now we have added some must have steps to our workflow. Let's explore! 🍀
+## Step 6: Ok, so now we have added some must have steps to our workflow. Let's explore!  🌈
 
 You're now able to automatically check linting and testing before deploying your code. And you didn't have to do anything except push your code!
 
 Now, let's see what fun we can do! And there are sooo many options. For instance,
 
-## Step 6: Sending an email notification every time a job fails and/or succeeds. 📫
-  
-### Set a timing for when a deploy should be set. ⏰
+### Pushing a Docker image to Docker Hub 🐳
+Docker has become a quintessential element of becoming a part of modern software development, and let's you build and ship your code easier than ever. This is accomplished by creating an image, more specificely a Docker image, which contains everything that is needed for your code to run, e.g. operating system, dependecies, and your code. This image can then be used to create indentical deployments to different servers, with you as a developer having to worry if your code is going to behave differently.
 
-## Step-<INPUT> You are becoming a pro, time to explore Github Marketplace
+In the same way we can push our code to Github repository, Docker provides a repository to store all our Docker images. This is known as Docker Hub. A handy option is therefore to push a new Docker image to Docker Hub, each time we merge and release a new version of our code. Luckily this operation can be automated using Github actions, and is what you are to accomplish in this task.
+
+To create a Docker image we use a Dockerfile. We have included a dummy Dockerfile in the repository which can be used for this task, however, if you are feeling adventures and are familiar with Docker, you can of course modify it. 
+
+To be able to complete this task, you will need
+1. A Docker Hub account - This can be created for free [here](https://hub.docker.com/signup)
+2. A Docker repository - This can be created by following [this guide](https://docs.github.com/en/get-started/quickstart/create-a-repo)
+
+In the script that we are going to create we need both our Docker Hub username and password. As was dicussed in Step 5, we do not want usernames or passwords our code, and we will therefore once again use the Secrets.
+
+>**Task 1:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password
+
+>**Task 2:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password
+
+### Send e-mail notification when a workflow fails/succeeds 📫
+Check out [this](https://github.com/marketplace/actions/send-email) action if you want to send an e-mail notification to your gmail account when your workflow fails and/or succeeds. **Note** if you have set up 2FA (Two Factor Authentication) on your email, this action won't work.
+
+### Get awesome development stats in README ✨
+Are you an earlybird or a nightowl? When are you most productive during the day? What are the languages you code in? You can add such fun stats in your `README.md` file using [this](https://github.com/marketplace/actions/profile-readme-development-stats) action.
+
+## Step 7: You are becoming a pro, time to explore Github Marketplace
 In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository.
