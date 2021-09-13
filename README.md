@@ -140,7 +140,7 @@ You're now able to automatically check linting and testing before deploying your
 
 Now, let's see what fun we can do! And there are sooo many options. For instance,
 
-### Pushing a Docker image to Docker Hub
+### Pushing a Docker image to Docker Hub 🐳
 Docker has become a quintessential element of becoming a part of modern software development, and let's you build and ship your code easier than ever. This is accomplished by creating an image, more specificely a Docker image, which contains everything that is needed for your code to run, e.g. operating system, dependecies, and your code. This image can then be used to create indentical deployments to different servers, with you as a developer having to worry if your code is going to behave differently.
 
 In the same way we can push our code to Github repository, Docker provides a repository to store all our Docker images. This is known as Docker Hub. A handy option is therefore to push a new Docker image to Docker Hub, each time we merge and release a new version of our code. Luckily this operation can be automated using Github actions, and is what you are to accomplish in this task.
