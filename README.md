@@ -163,5 +163,8 @@ Check out [this](https://github.com/marketplace/actions/send-email) action if yo
 ### Get awesome development stats in README ✨
 Are you an earlybird or a nightowl? When are you most productive during the day? What are the languages you code in? You can add such fun stats in your `README.md` file using [this](https://github.com/marketplace/actions/profile-readme-development-stats) action.
 
+### Set a timing for when a deploy should be set ⏰
+Sometimes we want to deploy regurarly and not just when a defined action, such as pushing our code, happens. We can use the `schedule` parameter for this as shown in [this](https://docs.github.com/en/actions/guides/scheduling-issue-creation) documentation.
+
 ## Step 7: You are becoming a pro, time to explore Github Marketplace
 In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository.
