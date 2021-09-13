@@ -8,7 +8,11 @@ export interface IValidator {
     secret: boolean;
     test: boolean;
     timedDeploy: boolean;
-    docker: boolean;
+    docker1: boolean;
+    docker2: boolean;
+    docker3: boolean;
+    hacker: boolean;
+    conditional: boolean;
 }
 
 export const calcTp = (validated: IValidator): number => {
@@ -37,9 +41,13 @@ export const validateCDCI = async (): Promise<IValidator> => {
         timedDeploy:
             validateText(buildText, 'schedule:') &&
             validateText(buildText, '- cron:'),
-        docker:
-            validateText(buildText, 'docker/build-push-action') &&
-            validateText(buildText, 'docker/login-action')
+        docker1: validateText(buildText, 'docker/login-action'),
+        docker2: validateText(buildText, 'docker/metadata-action'),
+        docker3: validateText(buildText, 'docker/build-push-action'),
+        hacker:
+            validateText(buildText, 'lirantal/is-website-vulnerable') &&
+            validateText(buildText, '.github.io'),
+        conditional: validateText(buildText, 'if: ')
     };
 };
 
