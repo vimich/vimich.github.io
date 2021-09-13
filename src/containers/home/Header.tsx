@@ -39,7 +39,10 @@ const Header: React.FC<{ tp: number }> = props => {
     return (
         <Container>
             <TitleAndLogo>
-                <H1>Github Actions Works</H1>
+                {/* This is where you can change the page title */}
+                {/* --------- EDIT LINE BELOW ----------------- */}
+                <H1>This is the wrong title🤨</H1>
+                {/* ------------------------------------------- */}
                 <Img src={AcnLogo} />
             </TitleAndLogo>
             <P>
