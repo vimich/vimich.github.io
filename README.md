@@ -9,7 +9,7 @@ https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
 
 Great, now we're ready to start!
 
-## Step 1: The basics 
+## Step 1: The basics 👶
 
 You can find the workflow file in `.github/workflows/build-pipeline.yml`. Github Actions will automatically detect all workflows that are located in this folder.
 
@@ -76,15 +76,15 @@ We now want to add the step of automatically testing our code before we build it
 
 But sometimes you want to be able to set up jobs that depend on other jobs. For example, you might have some services that you want to test against. But to save money, you only want to run those services when you're actually running tests. So you might want to have a job that starts your services, a job that runs your tests, and then a job that stops your services.
 
-To specify dependencies between jobs, you can use the `needs` parameter to indicate what jobs rely on the completion of other jobs. In the example below, `job1` must complete successfully before `job2` begins, and `job3` waits for both `job1` and `job2` to complete.
+To specify dependencies between jobs, you can use the `needs` parameter to indicate what jobs rely on the completion of other jobs. In the example below, `add-beans` must complete successfully before `grind-beans` begins, and `brew-coffee` waits for both `add-beans` and `grind-beans` to complete.
 
 ```yaml
 jobs:
-  job1:
-  job2:
-    needs: job1
-  job3:
-    needs: [job1, job2]
+  add-beans:
+  grind-beans:
+    needs: add-beans
+  brew-coffee:
+    needs: [add-beans, grind-beans]
 ```
 
 > **Task:** Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow your `Actions` page.
@@ -124,7 +124,7 @@ As seen here, if you want to use the value of an environment variable inside a r
 
 > **Task**: Add a step to either of your jobs that prints out an environment variable of your choice.
 
-## Step 5: Adding secrets
+## Step 5: Adding secrets 🤫
 
 Secrets is actually the perfect scenario to use environment variables. You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you don't want to have your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
 
@@ -134,8 +134,8 @@ To use that secret, you can reference it using the secrets context within your w
 
 > **Task:** Create a secret with name `PASSWORD`. In the same step as for the previous task,assign the secret's value to the environment variable `SECRET`. What happens if you try to print out the secret. *NB: Although this variable does not have a concrete usecase yet, we will actually apply it in Step 6, where you can choose to integrate with Docker hub.*
 
-### Step 6 (OPTIONAL): Pushing a Docker image to Docker Hub 🐳
-Docker has become a quintessential element of becoming a part of modern software development, and let's you build and ship your code easier than ever. This is accomplished by creating an image, more specificely a Docker image, which contains everything that is needed for your code to run, e.g. operating system, dependecies, and your code. This image can then be used to create indentical deployments to different servers, with you as a developer having to worry if your code is going to behave differently.
+## Step 6: Pushing a Docker image to Docker Hub 🐳
+Docker has become a quintessential element of modern software development, and let's you build and ship your code easier than ever. This is accomplished by creating an image, more specificely a Docker image, which contains everything that is needed for your application to run, e.g. operating system, dependecies, and your code. This image can then be used to create indentical deployments to different servers, without you as a developer having to worry if your code is going to behave differently.
 
 In the same way we can push our code to Github repository, Docker provides a repository to store all our Docker images. This is known as Docker Hub. A handy option is therefore to push a new Docker image to Docker Hub, each time we merge and release a new version of our code. Luckily this operation can be automated using Github actions, and is what you are to accomplish in this task.
 
