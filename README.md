@@ -132,7 +132,7 @@ Secrets is actually the perfect scenario to use environment variables. You'll of
 
 To set up a secret, go to your `Repository Settings` page, then select `Secrets`. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
   
-To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}`, and store it as an environment variable so that your code can get ahold of it.
+To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secrets.PASSWORD}}`, and store it as an environment variable so that your code can get ahold of it.
 
 > **Task:** Create a secret with name `PASSWORD`. In the same step as for the previous task,assign the secret's value to the environment variable `SECRET`. What happens if you try to print out the secret. *NB: Although this variable does not have a concrete usecase yet, we will actually apply it in Step 6, where you can choose to integrate with Docker hub.*
 
