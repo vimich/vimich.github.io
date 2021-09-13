@@ -41,8 +41,8 @@ jobs:
       #- name: Use a secret
       #  run: echo "My guilty pleasure is $SECRET, but i pretend it is $not-a-secret"
       #  env:
-      #    SECRET=${{ secret.PASSWORD }}
-      #    not-a-secret=Eurovision
+      #    SECRET: ${{ secrets.PASSWORD }}
+      #    not-a-secret: Eurovision
       - name: Build
         run: npm run build
       #- name: Deploy 🚀
