@@ -5,6 +5,11 @@ on:
     branches: [ develop ]
   pull_request:
     branches: [ develop ]
+  #schedule:
+  # # This example triggers the workflow every day at 5:30 and 17:30 UTC:
+  # # * is a special character in YAML so you have to quote this string
+  #  - cron:  '30 5,17 * * *'
+
 
 jobs:
   build:
@@ -21,8 +26,8 @@ jobs:
         run: npm run lint:ts
       - name: Run styles lint and format check
         run: npm run lint:css
-      - name: Run tests
-        run: npm test
+      #- name: Run tests
+      #  run: npm test
   deploy:
     needs: build
     runs-on: ubuntu-latest
@@ -41,8 +46,8 @@ jobs:
         #  not-a-secret=Eurovision
       - name: Build
         run: npm run build
-      - name: Deploy 🚀
-        uses: JamesIves/github-pages-deploy-action@4.1.4
-        with:
-          branch: gh-pages
-          folder: dist
+      #- name: Deploy 🚀
+      #  uses: JamesIves/github-pages-deploy-action@4.1.4
+      #  with:
+      #    branch: gh-pages
+      #    folder: dist
