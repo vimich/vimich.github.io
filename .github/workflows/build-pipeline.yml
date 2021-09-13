@@ -51,3 +51,12 @@ jobs:
       #  with:
       #    branch: gh-pages
       #    folder: dist
+  security:
+    needs: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: Test for public javascript library vulnerabilities on your site
+        uses: lirantal/is-website-vulnerable@master
+        with:
+          # TODO: Aarvold fjern url
+          scan-url: " https://aarvold.github.io/"
