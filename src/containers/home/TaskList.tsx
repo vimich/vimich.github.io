@@ -25,6 +25,10 @@ import TestImg from '../../assets/images/test.svg';
 import TestBlackImg from '../../assets/images/test_black.svg';
 import HackerImg from '../../assets/images/hacker.svg';
 import HackerBlackImg from '../../assets/images/hacker_black.svg';
+import MailImg from '../../assets/images/mail.svg';
+import MailBlackImg from '../../assets/images/mail_black.svg';
+import StatsImg from '../../assets/images/stats.svg';
+import StatsBlackImg from '../../assets/images/stats_black.svg';
 
 const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
     const [validated, setValidated] = React.useState<IValidator>(null);
@@ -109,6 +113,19 @@ const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
                 img={HackerImg}
                 imgPlaceholder={HackerBlackImg}
                 intlPrefix="task.hacker"
+                isBadgeFirst={true}
+            />
+            <Task
+                completed={validated?.mail}
+                img={MailImg}
+                imgPlaceholder={MailBlackImg}
+                intlPrefix="task.mail"
+            />
+            <Task
+                completed={validated?.stats}
+                img={StatsImg}
+                imgPlaceholder={StatsBlackImg}
+                intlPrefix="task.status"
                 isBadgeFirst={true}
             />
         </>

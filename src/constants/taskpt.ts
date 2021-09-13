@@ -9,5 +9,7 @@ export const taskpt: Record<string, number> = {
     docker2: 40,
     docker3: 100,
     hacker: 90,
-    conditional: 45
+    conditional: 45,
+    stats: 65,
+    mail: 85
 };
