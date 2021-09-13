@@ -11,10 +11,12 @@ const Container = styled.section`
 `;
 
 const Home: React.FC = () => {
+    const [tp, setTp] = React.useState<number>(0);
+
     return (
         <Container>
-            <Header />
-            <TaskList />
+            <Header tp={tp} />
+            <TaskList setTp={setTp} />
         </Container>
     );
 };

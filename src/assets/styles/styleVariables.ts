@@ -9,7 +9,7 @@ export const colors = {
     fontColorLight: '#4a4a4a',
     acnPurple1: '#a100ff',
     greenSuccess: '#CEF0C4',
-    redUnsuccessful: '#F0CCC5'
+    redUnsuccessful: '#F9A680'
 };
 
 export const sizes = {

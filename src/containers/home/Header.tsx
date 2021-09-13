@@ -35,7 +35,7 @@ const Img = styled.img`
     height: 2.5rem;
 `;
 
-const Header: React.FC = () => {
+const Header: React.FC<{ tp: number }> = props => {
     return (
         <Container>
             <TitleAndLogo>
@@ -49,7 +49,7 @@ const Header: React.FC = () => {
                 BLABETIBLA - include more text and links and links and and links
                 and links to resources
             </P>
-            <H2>Du har nå 69 poeng!</H2>
+            <H2>Du har nå {props.tp || 0} poeng!</H2>
         </Container>
     );
 };
