@@ -34,10 +34,11 @@ jobs:
           node-version: '14.x'
       - name: Install dependencies
         run: npm ci
-      - name: Make Env variable available in webpage
-        run: |
-          touch .env
-            echo SECRET=${{ secret.PASSWORD }} >> .env
+      - name: Use a secret
+        #run: echo "My guilty pleasure is $SECRET, but i pretend it is $not-a-secret"
+        #env:
+        #  SECRET=${{ secret.PASSWORD }}
+        #  not-a-secret=Eurovision
       - name: Build
         run: npm run build
       - name: Deploy 🚀

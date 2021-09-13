@@ -49,21 +49,32 @@ const Header: React.FC<{ tp: number }> = props => {
             <P>
                 GitHub Actions makes it easy to automate all your software
                 workflows, now with world-class CI/CD. Build, test, and deploy
-                your code right from GitHub. In this workshop you will setup different workflows
-                describen in each their red box on this web page. Your task is to implement  jobs
-                in the worksflow which solves the tasks. Your changes should be pushed to the develop
-                branch, this will start the workflow. If the workflow syntax is correct this web page
-                will be updated with your new changes, and if you have implemented the correct actions
-                to solve any of the tasks below they will turn green. This way you can keep track of
-                your progress. The goal is to turn each box below green and unlock each badge. The
-                workshop repo can be found <a href="https://github.com/acntech/workshop-github-actions">here </a>
+                your code right from GitHub. In this workshop you will setup
+                different workflows describen in each their red box on this web
+                page. Your task is to implement jobs in the worksflow which
+                solves the tasks. Your changes should be pushed to the develop
+                branch, this will start the workflow. If the workflow syntax is
+                correct this web page will be updated with your new changes, and
+                if you have implemented the correct actions to solve any of the
+                tasks below they will turn green. This way you can keep track of
+                your progress. The goal is to turn each box below green and
+                unlock each badge. The workshop repo can be found{' '}
+                <a href="https://github.com/acntech/workshop-github-actions">
+                    here{' '}
+                </a>
             </P>
 
             <P>
-                Remember to use the <a href="https://docs.github.com/en/actions">github actions </a>docs,
-                it offers good help. Hint: there are examples of how to setup workflows to <a href="https://docs.github.com/en/actions/guides/building-and-testing-nodejs-or-python">test and build </a> node.js apps.
+                Remember to use the{' '}
+                <a href="https://docs.github.com/en/actions">github actions </a>
+                docs, it offers good help. Hint: there are examples of how to
+                setup workflows to{' '}
+                <a href="https://docs.github.com/en/actions/guides/building-and-testing-nodejs-or-python">
+                    test and build{' '}
+                </a>{' '}
+                node.js apps.
             </P>
-        <H2>Du har nå {props.tp || 0} poeng!</H2>
+            <H2>You have {props.tp || 0} points!</H2>
         </Container>
     );
 };

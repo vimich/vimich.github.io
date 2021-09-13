@@ -8,8 +8,8 @@ export const colors = {
     baseFontColor: '#484444',
     fontColorLight: '#4a4a4a',
     acnPurple1: '#a100ff',
-    greenSuccess: '#CEF0C4',
-    redUnsuccessful: '#F9A680'
+    greenSuccess: '#85CC7E',
+    redUnsuccessful: '#FEB264'
 };
 
 export const sizes = {

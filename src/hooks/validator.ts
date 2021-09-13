@@ -3,7 +3,7 @@ import { taskpt } from '../constants/taskpt';
 
 export interface IValidator {
     deploy: boolean;
-    health: boolean;
+    env: boolean;
     lint: boolean;
     secret: boolean;
     test: boolean;
@@ -28,11 +28,11 @@ export const validateCDCI = async (): Promise<IValidator> => {
             buildText,
             'uses: JamesIves/github-pages-deploy-action@4.1.4'
         ),
-        health: false,
+        env: validateText(buildText, 'env:'),
         lint:
             validateText(buildText, 'run: npm run lint:ts') &&
             validateText(buildText, 'run: npm run lint:css'),
-        secret: validateText(buildText, 'SECRET: ${{ secret.PASSWORD }}'),
+        secret: validateText(buildText, 'secret.PASSWORD'),
         test: validateText(buildText, 'run: npm test'),
         timedDeploy:
             validateText(buildText, 'schedule:') &&

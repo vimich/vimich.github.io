@@ -1,6 +1,6 @@
 export const taskpt: Record<string, number> = {
     deploy: 50,
-    health: 100,
+    env: 35,
     lint: 50,
     secret: 75,
     test: 100,
