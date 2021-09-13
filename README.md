@@ -111,6 +111,8 @@ To set up a secret, go to your `Repository Settings` page, then select `Secrets`
 To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}`.
 
 **Task: Create a job `secret` that runs on a Linux VM and saves the secret you've created to the environment variable `PASSWORD`.**
+
+*NB. Although this variable does not have a concrete usecase yet, we will actually apply it in Step 5, where you can choose to integrate with Docker hub.*
   
 ## Step 5: Ok, so now we have added some must have steps to our workflow. Let's explore! 🍀
 
@@ -118,9 +120,26 @@ You're now able to automatically check linting and testing before deploying your
 
 Now, let's see what fun we can do! And there are sooo many options. For instance,
 
-## Step 6: Sending an email notification every time a job fails and/or succeeds. 📫
-  
-### Set a timing for when a deploy should be set. ⏰
+## Sending an email notification every time a job fails and/or succeeds. 📫
+asdadasd
+## Set a timing for when a deploy should be set. ⏰
+safddsfds
+## Pushing a Docker image to Docker Hub
+Docker has become a quintessential element of becoming a part of modern software development, and let's you build and ship your code easier than ever. This is accomplished by creating an image, more specificely a Docker image, which contains everything that is needed for your code to run, e.g. operating system, dependecies, and your code. This image can then be used to create indentical deployments to different servers, with you as a developer having to worry if your code is going to behave differently.
 
-## Step-<INPUT> You are becoming a pro, time to explore Github Marketplace
+In the same way we can push our code to Github repository, Docker provides a repository to store all our Docker images. This is known as Docker Hub. A handy option is therefore to push a new Docker image to Docker Hub, each time we merge and release a new version of our code. Luckily this operation can be automated using Github actions, and is what you are to accomplish in this task.
+
+To create a Docker image we use a Dockerfile. We have included a dummy Dockerfile in the repository which can be used for this task, however, if you are feeling adventures and are familiar with Docker, you can of course modify it. 
+
+To be able to complete this task, you will need
+1. A Docker Hub account - This can be created for free [here](https://hub.docker.com/signup)
+2. A Docker repository - This can be created by following [this guide](https://docs.github.com/en/get-started/quickstart/create-a-repo)
+
+In the script that we are going to create we need both our Docker Hub username and password. As was dicussed in Step 5, we do not want usernames or passwords our code, and we will therefore once again use the Secrets.
+
+**Task 1: Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password**
+
+**Task 2: Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password**
+
+## Step 6: You are becoming a pro, time to explore Github Marketplace
 In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository.
