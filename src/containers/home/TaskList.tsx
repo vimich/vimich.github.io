@@ -17,6 +17,8 @@ import SecretImg from '../../assets/images/secret.svg';
 import SecretBlackImg from '../../assets/images/secret_black.svg';
 import TestImg from '../../assets/images/test.svg';
 import TestBlackImg from '../../assets/images/test_black.svg';
+import HackerImg from '../../assets/images/hacker.svg';
+import HackerBlackImg from '../../assets/images/hacker_black.svg';
 
 const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
     const [validated, setValidated] = React.useState<IValidator>(null);
@@ -71,10 +73,36 @@ const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
                 intlPrefix="task.clock"
             />
             <Task
-                completed={validated?.docker}
+                completed={validated?.conditional}
+                img={ClockImg}
+                imgPlaceholder={ClockBlackImg}
+                intlPrefix="task.conditional"
+                isBadgeFirst={true}
+            />
+            <Task
+                completed={validated?.docker1}
                 img={DockerImg}
                 imgPlaceholder={DockerBlackImg}
-                intlPrefix="task.docker"
+                intlPrefix="task.docker1"
+            />
+            <Task
+                completed={validated?.docker2}
+                img={DockerImg}
+                imgPlaceholder={DockerBlackImg}
+                intlPrefix="task.docker2"
+                isBadgeFirst={true}
+            />
+            <Task
+                completed={validated?.docker3}
+                img={DockerImg}
+                imgPlaceholder={DockerBlackImg}
+                intlPrefix="task.docker3"
+            />
+            <Task
+                completed={validated?.hacker}
+                img={HackerImg}
+                imgPlaceholder={HackerBlackImg}
+                intlPrefix="task.hacker"
                 isBadgeFirst={true}
             />
         </>

@@ -17,8 +17,17 @@ const INITIAL_INTL_MESSAGES = {
     'task.clock.title': 'Right on time!',
     'task.clock.text':
         'Successfully configure a timed deploy triggerd by Github Actions',
-    'task.docker.title': 'Dar she blows!',
-    'task.docker.text': 'Deploy a docker image to a public docker registry'
+    'task.docker1.title': 'Docker up & running',
+    'task.docker1.text': 'Deploy a docker image to a public docker registry',
+    'task.docker2.title': 'Docker ready!',
+    'task.docker2.text': 'Deploy a docker image to a public docker registry',
+    'task.docker3.title': 'Dar she blows!',
+    'task.docker3.text': 'Deploy a docker image to a public docker registry',
+    'task.conditional.title': 'If only i could..',
+    'task.conditional.text': 'Create conditional steps to achive me',
+    'task.hacker.title': 'Fortress',
+    'task.hacker.text':
+        'Automatically check your site for javascript vunderabilities in CI/CD to achieve this badge. Hint: is-website-vulnerable @ github marketplace'
 };
 
 export default INITIAL_INTL_MESSAGES;
