@@ -15,6 +15,7 @@ const Container = styled.section`
 const TitleAndLogo = styled.div`
     display: flex;
     justify-content: space-between;
+    margin-bottom: 1rem; 
 `;
 
 const H1 = styled.h1`
@@ -46,11 +47,15 @@ const Header: React.FC<{ tp: number }> = props => {
                 <Img src={AcnLogo} />
             </TitleAndLogo>
             <P>
-                GitHub Actions makes it easy to automate all your software
-                workflows, now with world-class CI/CD. Build, test, and deploy
-                your code right from GitHub. Make code reviews, branch
-                BLABETIBLA - include more text and links and links and and links
-                and links to resources
+                GitHub Actions gjør det enkelt å automatisere alle workflows til din programvareutvikling. I denne workshopen
+                skal du sette opp flere ulike workflows som er beskrevet i hver sin røde boks i denne nettsiden. Din oppgave
+                er å implementere jobber i workflowen som løser oppgavene under. Disse endringene pusher du til develop branch.
+                Da vil workflowen starte. Om syntaksen er riktig vil du få en oppdatert versjon av nettsiden, og hvis du har
+                lagt inn riktig action for å løse en av oppgavene vil de bli grønne. Link til repoet finner du <a href="https://github.com/acntech/workshop-github-actions">her </a>
+            </P>
+            <P>
+                Husk å benytte <a href="https://docs.github.com/en/actions">github actions </a> dokumentasjonen,
+                den tilbyr mye god hjelp. Hint: det finnes eksempler på å sette opp prosesser for å <a href="https://docs.github.com/en/actions/guides/building-and-testing-nodejs-or-python">teste og bygge </a> node.js apper.
             </P>
             <H2>Du har nå {props.tp || 0} poeng!</H2>
         </Container>
