@@ -11,7 +11,7 @@ describe(Task, () => {
             <Task
                 img={testImg}
                 imgPlaceholder={testImg}
-                intlPrefix="test.text"
+                intlPrefix="task.test"
                 completed={true}
             />
         );

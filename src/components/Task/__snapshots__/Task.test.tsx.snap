@@ -13,10 +13,10 @@ exports[`Task snapshot 1`] = `
   width: 100%;
   padding: 1rem 20%;
   box-shadow: 0px -1px 0px 0px #4a4a4a;
-  background-color: #CEF0C4;
+  background-color: #85CC7E;
 }
 
-.c2 {
+.c1 {
   display: -webkit-box;
   display: -webkit-flex;
   display: -ms-flexbox;
@@ -28,18 +28,27 @@ exports[`Task snapshot 1`] = `
   margin-top: 1rem;
 }
 
-.c3 {
-  height: 8rem;
+.c2 {
+  height: 10rem;
   margin: 0 0 0 1rem;
 }
 
-.c1 {
-  font-size: 1.5rem;
-  text-align: end;
-  color: #4a4a4a;
+.c3 {
+  height: -webkit-min-content;
+  height: -moz-min-content;
+  height: min-content;
+  -webkit-align-self: center;
+  -ms-flex-item-align: center;
+  align-self: center;
 }
 
 .c4 {
+  font-size: 2rem;
+  color: #4a4a4a;
+  margin-bottom: 1.5rem;
+}
+
+.c5 {
   color: #4a4a4a;
   margin: auto 0;
 }
@@ -47,22 +56,26 @@ exports[`Task snapshot 1`] = `
 <section
     class="c0"
   >
-    <h3
+    <div
       class="c1"
     >
-      test.text.title
-    </h3>
-    <div
-      class="c2"
-    >
       <img
-        class="c3"
+        class="c2"
       />
-      <p
-        class="c4"
+      <div
+        class="c3"
       >
-        test.text.text
-      </p>
+        <h3
+          class="c4"
+        >
+          Better safe than sorry!
+        </h3>
+        <p
+          class="c5"
+        >
+          Quality assurance is key! Write the neccessary commands to automatically test your code. Each time you push new code to a specific branch, Github actions ought to run all unit tests in the code.
+        </p>
+      </div>
     </div>
   </section>
 </DocumentFragment>

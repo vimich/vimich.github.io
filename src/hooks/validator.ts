@@ -50,8 +50,8 @@ export const validateCDCI = async (): Promise<IValidator> => {
             validateText(buildText, 'lirantal/is-website-vulnerable') &&
             validateText(buildText, '.github.io'),
         conditional: validateText(buildText, 'if: '),
-        mail: validateText(buildText, 'mail'),
-        stats: validateText(buildText, 'stats')
+        mail: validateText(buildText, 'dawidd6/action-send-mail'),
+        stats: validateText(buildText, 'anmol098/waka-readme-stats')
     };
 };
 

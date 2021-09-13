@@ -25,15 +25,18 @@ const INITIAL_INTL_MESSAGES = {
     'task.docker2.text': 'Attach metadata to your Docker image',
     'task.docker3.title': 'Swoooosh!',
     'task.docker3.text': 'Your Docker image is locked and loaded, push it',
-    'task.conditional.title': 'If only i could..',
-    'task.conditional.text': 'Create conditional steps to achive me',
+    'task.conditional.title': 'Condition Master',
+    'task.conditional.text':
+        'Run a step when a specified condition is met using the if parameter.',
     'task.hacker.title': 'Fortress',
     'task.hacker.text':
         'Automatically check your site for javascript vaulnerabilities in CI/CD to achieve this badge. Hint: is-website-vulnerable @ github marketplace',
     'task.status.title': 'Statistics Guru',
-    'task.status.text': 'Statistics might be nerdy, but it can also be fun! You have become quite the master of Github Actions and added fun development statistic to your readme documenation.',
+    'task.status.text':
+        'Statistics might be nerdy, but it can also be fun! You have become quite the master of Github Actions and added fun development statistic to your readme documenation.',
     'task.mail.title': 'You got mail!',
-    'task.mail.text': 'Automatically send mails from CI/CD to your private account when the workflow fails and/or succeeds.'
+    'task.mail.text':
+        'Automatically send mails from CI/CD to your private account when the workflow fails and/or succeeds.'
 };
 
 export default INITIAL_INTL_MESSAGES;

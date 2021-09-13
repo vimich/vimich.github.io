@@ -8,6 +8,7 @@ const Container = styled.section`
     display: grid;
     width: 100%;
     grid-template-columns: 100%;
+    margin-top: 2rem;
 `;
 
 const Home: React.FC = () => {

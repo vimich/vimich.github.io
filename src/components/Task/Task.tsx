@@ -31,14 +31,19 @@ const BadgeContainer = styled.div<{ reverseOrder: boolean }>`
 `;
 
 const Badge = styled.img<{ reverseOrder: boolean }>`
-    height: 8rem;
+    height: 10rem;
     margin: ${props => (props.reverseOrder ? '0 0 0 1rem' : '0 1rem 0 0')};
 `;
 
+const Div = styled.div`
+    height: min-content;
+    align-self: center;
+`;
+
 const H3 = styled.h3<{ reverseOrder: boolean }>`
-    font-size: 1.5rem;
-    text-align: ${props => (props.reverseOrder ? 'end' : 'start')};
+    font-size: 2rem;
     color: ${colors.fontColorLight};
+    margin-bottom: 1.5rem;
 `;
 
 const P = styled.p`
@@ -49,17 +54,19 @@ const P = styled.p`
 const Task: React.FC<ITaskProps> = props => {
     return (
         <Container completed={props.completed} className={props.className}>
-            <H3 reverseOrder={!props.isBadgeFirst}>
-                <FormattedMessage id={`${props.intlPrefix}.title`} />
-            </H3>
             <BadgeContainer reverseOrder={!props.isBadgeFirst}>
                 <Badge
                     reverseOrder={!props.isBadgeFirst}
                     src={props.completed ? props.img : props.imgPlaceholder}
                 />
-                <P>
-                    <FormattedMessage id={`${props.intlPrefix}.text`} />
-                </P>
+                <Div>
+                    <H3 reverseOrder={!props.isBadgeFirst}>
+                        <FormattedMessage id={`${props.intlPrefix}.title`} />
+                    </H3>
+                    <P>
+                        <FormattedMessage id={`${props.intlPrefix}.text`} />
+                    </P>
+                </Div>
             </BadgeContainer>
         </Container>
     );
