@@ -7,6 +7,8 @@
 2. You should now see three options on how to set up your repository. Click on the option `Import code` and use the repository url 
 https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
 
+3. Go to the `Settings` page at the top of your repository, choose `Pages` the left side menu, and choose `gh-pages` as the source branch.
+
 Great, now we're ready to start!
 
 ## Step 1: The basics 👶
