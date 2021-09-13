@@ -145,13 +145,25 @@ To be able to complete this task, you will need
 1. A Docker Hub account - This can be created for free [here](https://hub.docker.com/signup)
 2. A Docker repository - This can be created by following [this guide](https://docs.github.com/en/get-started/quickstart/create-a-repo)
 
-In the script that we are going to create we need both our Docker Hub username and password. As was dicussed in Step 5, we do not want usernames or passwords our code, and we will therefore once again use the Secrets.
+In the script that we are going to create, you need to use both your Docker Hub username and password. As was dicussed in Step 5, we do not want usernames or passwords our code, and we will therefore once again use Secrets.
 
->**Task 1:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password
+>**Task 1:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password. Then create a step in your workflow using `docker/login-action@v1` to log into Docker Hub in your workflow
 
->**Task 2:** Create two `secrets` in your repository called DOCKER_USERNAME and DOCKER_PASSWORD, which contains your Docker username and password
+Next we need to tell Docker Hub where we want to store our Docker image. 
+
+>**Task 2:** Create a step using `docker/metadata-action@v3`, where you specify the namespace and image name, e.g. my-name-space/favorite-image
+
+Finally we want to push the Docker image to Docker Hub.
+
+>**Task 3:** Use `docker/build-push-action@v2` to push our Docker image to Docker Hub. Make sure you include both labels and tags
+
+With your current setup you push to Docker Hub each time you create a pull request or merge, can you think of a way we can make sure we only push to Docker hub when we merge? 💭
+
 ## Step 7: You are becoming a pro, time to explore Github Marketplace 🌈
-In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository. Below you can find some examples.
+You're now able to automatically check linting and testing before deploying your code. And you didn't have to do anything except push your code!
+
+In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository. There are sooo many options. For instance,
+
 ### Send e-mail notification when a workflow fails/succeeds 📫
 Check out [this](https://github.com/marketplace/actions/send-email) action if you want to send an e-mail notification to your gmail account when your workflow fails and/or succeeds. **Note** if you have set up 2FA (Two Factor Authentication) on your email, this action won't work.
 

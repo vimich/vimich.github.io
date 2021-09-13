@@ -13,6 +13,8 @@ export interface IValidator {
     docker3: boolean;
     hacker: boolean;
     conditional: boolean;
+    stats: boolean;
+    mail: boolean;
 }
 
 export const calcTp = (validated: IValidator): number => {
@@ -47,7 +49,9 @@ export const validateCDCI = async (): Promise<IValidator> => {
         hacker:
             validateText(buildText, 'lirantal/is-website-vulnerable') &&
             validateText(buildText, '.github.io'),
-        conditional: validateText(buildText, 'if: ')
+        conditional: validateText(buildText, 'if: '),
+        mail: validateText(buildText, 'mail'),
+        stats: validateText(buildText, 'stats')
     };
 };
 

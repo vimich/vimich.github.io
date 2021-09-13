@@ -8,7 +8,9 @@ const INITIAL_INTL_MESSAGES = {
     'task.env.text':
         'Add an enviroment variable to the pipeline script to get this bagde',
     'task.secret.title': 'Mystery man',
-    'task.secret.text': 'Don\'t let anyone listen in! Add a secret named PASSWORD to achieve this badge',
+    'task.secret.text':
+        // eslint-disable-next-line quotes
+        "Don't let anyone listen in! Add a secret named PASSWORD to achieve this badge",
     'task.lint.title': 'Lint looks mint',
     'task.lint.text': 'Your code is looking clean and lint free!',
     'task.deploy.title': 'Deploy web page',
@@ -27,7 +29,11 @@ const INITIAL_INTL_MESSAGES = {
     'task.conditional.text': 'Create conditional steps to achive me',
     'task.hacker.title': 'Fortress',
     'task.hacker.text':
-        'Automatically check your site for javascript vunderabilities in CI/CD to achieve this badge. Hint: is-website-vulnerable @ github marketplace'
+        'Automatically check your site for javascript vunderabilities in CI/CD to achieve this badge. Hint: is-website-vulnerable @ github marketplace',
+    'task.status.title': 'Status',
+    'task.status.text': 'Status text',
+    'task.mail.title': 'Auto mailer',
+    'task.mail.text': 'Auto send mails from CI/CD'
 };
 
 export default INITIAL_INTL_MESSAGES;
