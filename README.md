@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1. From your personal github account create a new public repository with the name www.your_github_username.github.io. 
+1. From your personal github account create a new public repository with the name your_github_username.github.io.
 
 2. You should now see three options on how to set up your repository. Click on the option `Import code` and use the repository url 
 https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
@@ -69,7 +69,7 @@ The parameter `uses` selects an action to run as part of a step in your job. An 
 
 In the example above, the deploy step will create a new branch named `gh-pages` that will contain our built code used in deploying our website.
 
-**Task: In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at www.your_github_username.github.io.**
+> **Task:** In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `main` branch. Push your changes to `main` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at www.your_github_username.github.io.
 ## Step 3: Oh no! Something is wrong with our code 🐛
 
 We now want to add the step of automatically testing our code before we build it. When setting up multiple jobs in a workflow, the jobs run independently of each other, in parallel. Usually, that's ideal. Your jobs will run as soon as machines are available to execute them.
@@ -87,7 +87,7 @@ jobs:
     needs: [job1, job2]
 ```
 
-**Task: Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow your `Actions` page.**
+> **Task:** Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow your `Actions` page.
 
 **Discussion point: What are the benefits of adding this step to our workflow?**
 
@@ -100,27 +100,51 @@ Ever heard about linting before? Well, linting is what makes your code readable,
         run: npm run lint:css
 ```
   
-**Task: Add the steps above for running typescript and css linting to your existing job that contains the testing step. Verify that everything is running successfully by checking the workflow in your `Actions` page.**
+> **Task**: Add the steps above for running typescript and css linting to your existing job that contains the testing step. Verify that everything is running successfully by checking the workflow in your `Actions` page.
 
-## Step 4: Adding secrets
+## Step 4: Environment variables 🍀
 
-You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you don't want to have your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
+Sometimes our action could need input from outside of our workflow to run, which is when we
+want to use environment variables. You can define environment variables for a step, job, or
+entire workflows. The example below shows how to use environment variables in both a job and a step using the `env` parameter.
+
+```yaml
+jobs:
+  weekday_job:
+    runs-on: ubuntu-latest
+    env:
+      DAY_OF_WEEK: Mon
+    steps:
+      - name: "Hello world when it's Monday"
+        if: ${{ env.DAY_OF_WEEK == 'Mon' }}
+        run: echo "Hello $FIRST_NAME $MIDDLE_NAME $LAST_NAME, today is Monday!"
+        env:
+          FIRST_NAME: Mona
+          MIDDLE_NAME: The
+          LAST_NAME: Octocat
+```
+As seen here, to use the value of an environment variable in a workflow file, you should use the `env` context. If you want to use the value of an environment variable inside a runner, you can use the runner operating system's normal method for reading environment variables. For Linux, we reference environment variables using `$NAME_OF_VARIABLE`.
+
+> **Task**: Add a step to either of your jobs that prints out an environment variable of your choice.
+
+## Step 5: Adding secrets
+
+Secrets is actually the perfect scenario to use environment variables. You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you don't want to have your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
 
 To set up a secret, go to your `Repository Settings` page, then select `Secrets`. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
   
-To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}`.
+To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secret.PASSWORD}}`, and store it as an environment variable so that your code can get ahold of it.
 
-**Task: Create a job `secret` that runs on a Linux VM and saves the secret you've created to the environment variable `PASSWORD`.**
+> **Task:** Create a secret with name `PASSWORD`. In the same step as for the previous task,assign the secret's value to the environment variable `SECRET`. What happens if you try to print out the secret?
   
-## Step 5: Ok, so now we have added some must have steps to our workflow. Let's explore! 🍀
+## Step 6: Ok, so now we have added some must have steps to our workflow. Let's explore!  🌈
 
 You're now able to automatically check linting and testing before deploying your code. And you didn't have to do anything except push your code!
 
 Now, let's see what fun we can do! And there are sooo many options. For instance,
 
-## Step 6: Sending an email notification every time a job fails and/or succeeds. 📫
-  
-### Set a timing for when a deploy should be set. ⏰
+### Send e-mail notification when a workflow fails/succeeds
+Check out [this](https://github.com/marketplace/actions/send-email) action if you want to send an e-mail notification to your gmail account when your workflow fails and/or succeeds. **Note** if you have set up 2FA (Two Factor Authentication) on your email, this action won't work. 
 
 ## Step-<INPUT> You are becoming a pro, time to explore Github Marketplace
 In the same way there are libraries for almost any usecase when you write code, there are thousand of Github Actions already created for you to utilize. To continue to improve your repository go to the [Github Marketplace](https://github.com/marketplace?category=&query=sort%3Apopularity-desc&type=actions&verification=), find an action you like, and try to incorporate it into you repository.
