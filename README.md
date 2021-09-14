@@ -71,7 +71,7 @@ The parameter `uses` selects an action to run as part of a step in your job. An 
 
 In the example above, the deploy step will create a new branch named `gh-pages` that will contain our built code used in deploying our website.
 
-> **Task:** In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `develop` branch. Push your changes to `develop` to see that the workflow runs green in your `Actions` page. Once green, your website will be available at: *your_github_username.github.io*.
+> **Task:** In the file `.github/workflows/build-pipeline.yml`, fill in the necessary information in order to deploy your code every time you push to the `develop` branch. Push your changes to `develop` to see that the workflow runs green in your `Actions` page in the top of your repository. Once green, your website will be available at: *your_github_username.github.io*.
 ## Step 3: Oh no! Something is wrong with our code 🐛
 
 We now want to add the step of automatically testing our code before we build it. When setting up multiple jobs in a workflow, the jobs run independently of each other, in parallel. Usually, that's ideal. Your jobs will run as soon as machines are available to execute them.
@@ -89,7 +89,7 @@ jobs:
     needs: [add-beans, grind-beans]
 ```
 
-> **Task:** Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow your `Actions` page.
+> **Task:** Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow in your `Actions` page.
 
 **Discussion point: What are the benefits of adding this step to our workflow?**
 
