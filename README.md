@@ -9,7 +9,7 @@ https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
 
 Great, now we're ready to start!
 
-## Step 1: The basics 👶
+## Step 1: The basics  👶
 
 You can find the workflow file in `.github/workflows/build-pipeline.yml`. Github Actions will automatically detect all workflows that are located in this folder.
 
