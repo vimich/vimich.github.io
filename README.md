@@ -89,7 +89,7 @@ jobs:
     needs: [add-beans, grind-beans]
 ```
 
-> **Task:** Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow in your `Actions` page.
+> **Task:** Add a job that first checkouts the code, sets up `Node.js`, installs dependencies, and automatically runs all tests using the command `npm run test` before deploying. Make sure that we don't deploy if any test fails. Verify that both your jobs are running successfully by checking the workflow in your `Actions` page.
 
 **Discussion point: What are the benefits of adding this step to our workflow?**
 
