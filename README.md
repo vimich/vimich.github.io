@@ -9,6 +9,8 @@ https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
 
 3. Go to the `Settings` page at the top of your repository, choose `Pages` the left side menu, and choose branch `gh-pages` as the source branch, and keep root as the folder. Then click save!
 
+4. Then choose `Actions` and `General`. Under `Action Permissions` select "Allow all actions and reusable workflows" and save. Then scroll down to `Workflow permissions` and select "Read and write permissions" and save again.
+
 Great, now we're ready to start!
 
 ## Step 1: The basics 👶
@@ -130,7 +132,7 @@ As seen here, if you want to use the value of an environment variable inside a r
 
 Secrets is actually the perfect scenario to use environment variables. You'll often need things like tokens or passwords in deployment scenarios. For instance, if your application needs to log into you bank account to retrieve some information you don't want to have your social security number explicitly stated in your code. This is sensitive information which we normally would want to hide using `secrets`.
 
-To set up a secret, go to your `Repository Settings` page, then select `Secrets`. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
+To set up a secret, go to your `Repository Settings` page, then select `Secrets and variables` and `actions`. Use the `New repository secret` button to add your secret. Your secret's name will be used in your workflow to reference the data, and you can place the secret itself in the value.
   
 To use that secret, you can reference it using the secrets context within your workflow. If you had a secret named `PASSWORD`, you could reference that as `${{secrets.PASSWORD}}`, and store it as an environment variable so that your code can get ahold of it.
 
@@ -145,7 +147,7 @@ To create a Docker image we use a Dockerfile. We have included a dummy Dockerfil
 
 To be able to complete this task, you will need
 1. A Docker Hub account - This can be created for free [here](https://hub.docker.com/signup)
-2. A Docker repository - This can be created by following [this guide](https://docs.github.com/en/get-started/quickstart/create-a-repo)
+2. A Docker repository - This can be created by following [this guide](https://docs.docker.com/docker-hub/quickstart/)
 
 In the script that we are going to create, you need to use both your Docker Hub username and password. As was dicussed in Step 5, we do not want usernames or passwords our code, and we will therefore once again use Secrets.
 
