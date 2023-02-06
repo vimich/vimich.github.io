@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-1. From your personal github account create a new, empty, *public* repository with the name your_github_username.github.io.
+1. From your personal github account create a new, empty, **public** repository with the name your_github_username.github.io.
 
 2. You should now see three options on how to set up your repository. Click on the option `Import code` and use the repository url 
 https://github.com/acntech/workshop-github-actions.git. Click `Begin import`.
