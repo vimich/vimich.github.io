@@ -77,19 +77,6 @@ const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
                 isBadgeFirst={true}
             />
             <Task
-                completed={validated?.timedDeploy}
-                img={ClockImg}
-                imgPlaceholder={ClockBlackImg}
-                intlPrefix="task.clock"
-            />
-            <Task
-                completed={validated?.conditional}
-                img={ConditionalImg}
-                imgPlaceholder={ConditionalBlackImg}
-                intlPrefix="task.conditional"
-                isBadgeFirst={true}
-            />
-            <Task
                 completed={validated?.docker1}
                 img={DockerImg}
                 imgPlaceholder={DockerBlackImg}
@@ -109,10 +96,10 @@ const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
                 intlPrefix="task.docker3"
             />
             <Task
-                completed={validated?.hacker}
-                img={HackerImg}
-                imgPlaceholder={HackerBlackImg}
-                intlPrefix="task.hacker"
+                completed={validated?.conditional}
+                img={ConditionalImg}
+                imgPlaceholder={ConditionalBlackImg}
+                intlPrefix="task.conditional"
                 isBadgeFirst={true}
             />
             <Task
@@ -126,6 +113,19 @@ const TaskList: React.FC<{ setTp: React.Dispatch<number> }> = props => {
                 img={StatsImg}
                 imgPlaceholder={StatsBlackImg}
                 intlPrefix="task.status"
+                isBadgeFirst={true}
+            />
+            <Task
+                completed={validated?.timedDeploy}
+                img={ClockImg}
+                imgPlaceholder={ClockBlackImg}
+                intlPrefix="task.clock"
+            />
+            <Task
+                completed={validated?.hacker}
+                img={HackerImg}
+                imgPlaceholder={HackerBlackImg}
+                intlPrefix="task.hacker"
                 isBadgeFirst={true}
             />
         </>
