@@ -68,7 +68,7 @@ jobs:
         uses: docker/metadata-action@v3
         with: 
           images: 
-            name/app
+            vidardock/vimich.github.io
       - name: Third dock
         uses: docker/build-push-action@v2
         with:
