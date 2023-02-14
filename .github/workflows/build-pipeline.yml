@@ -34,6 +34,11 @@ jobs:
         run: npm run lint:ts
       - name: Run styles lint and format check
         run: npm run lint:css
+      - name: Print truth
+        run: echo "Hello $TRUTH, today is $MORE_TRUTH!"
+        env:
+          TRUTH: Captain Falcon
+          MORE_TRUTH: Up B
   deploy:
     needs: [build, test]
     runs-on: ubuntu-latest
