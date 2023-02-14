@@ -66,6 +66,7 @@ jobs:
           password: ${{secrets.DOCKER_PASSWORD}}
       - name: Docking
         uses: docker/metadata-action@v3
+        id: meta
         with: 
           images: 
             vidardock/vimich.github.io
