@@ -35,10 +35,11 @@ jobs:
       - name: Run styles lint and format check
         run: npm run lint:css
       - name: Print truth
-        run: echo "Hello $TRUTH, today is $MORE_TRUTH!"
+        run: echo "Hello $TRUTH, today is $MORE_TRUTH! Here is a secret $SECRET"
         env:
           TRUTH: Captain Falcon
           MORE_TRUTH: Up B
+          SECRET: ${{secrets.PASSWORD}}
   deploy:
     needs: [build, test]
     runs-on: ubuntu-latest
